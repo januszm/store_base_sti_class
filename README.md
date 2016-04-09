@@ -68,7 +68,7 @@ This gem incorporates work from:
 - https://github.com/Lovethis/store_base_sti_class_for_3_1
 - https://github.com/codepodu/store_base_sti_class_for_4_0
 
-It currently works with ActiveRecord 3.0.5 through 4.2.x.
+It currently works with ActiveRecord 3.0.5 through 5.0.x.
 
 ## Copyright
 
