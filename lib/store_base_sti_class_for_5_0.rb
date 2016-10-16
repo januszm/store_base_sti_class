@@ -253,10 +253,9 @@ if ActiveRecord::VERSION::STRING =~ /^5\.0/
               value = transform_value(next_reflection.klass.base_class.name)
               scope = scope.where(table.name => { reflection.type => value })
             else
-              value  = transform_value(next_reflection.klass.name)
-              klass  = next_reflection.klass
-              values = [klass] + klass.descendants
-              scope  = scope.where(table.name => { reflection.type => values })
+              klass = next_reflection.klass
+              value = ([klass] + klass.descendants).map(&:name)
+              scope = scope.where(table.name => { reflection.type => value })
             end
             # END PATCH
           end
