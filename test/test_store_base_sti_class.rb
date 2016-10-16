@@ -125,7 +125,8 @@ class TestStoreBaseStiClass < StoreBaseSTIClass::TestCase
     tag.reload
 
     tag = Tag.find(tag.id)
-    assert_equal 2, tag.polytagged_posts.size
+    assert_equal 0, tag.polytagged_posts.size
+    assert_equal 2, tag.polytagged_special_posts.size
   end
 
   def test_polymorphic_has_many_through_with_double_sti_on_join_model
