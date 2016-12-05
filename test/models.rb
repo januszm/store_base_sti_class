@@ -32,7 +32,6 @@ class Tag < ActiveRecord::Base
 
   has_many :polytaggings, :as => :polytag, :class_name => 'Tagging'
   has_many :polytagged_posts, :through => :polytaggings, :source => :taggable, :source_type => 'Post'
-  has_many :polytagged_special_posts, :through => :polytaggings, :source => :taggable, :source_type => 'SpecialPost'
 
   if Gem::Version.new(ActiveRecord::VERSION::STRING) < Gem::Version.new('4.1.0')
     has_many :authors, :class_name => "Author", :finder_sql => proc {
