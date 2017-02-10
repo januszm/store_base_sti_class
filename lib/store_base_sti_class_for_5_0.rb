@@ -346,7 +346,7 @@ if ActiveRecord::VERSION::STRING =~ /^5\.0/
     end
 
     module Reflection
-      class PolymorphicReflection < ThroughReflection
+      class PolymorphicReflection
         def source_type_info
           type = @previous_reflection.foreign_type
           source_type = @previous_reflection.options[:source_type]
