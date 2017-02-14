@@ -254,12 +254,11 @@ if ActiveRecord::VERSION::STRING =~ /^5\.0/
             # scope = scope.where(table.name => { reflection.type => value })
             if ActiveRecord::Base.store_base_sti_class
               value = transform_value(next_reflection.klass.base_class.name)
-              scope = scope.where(table.name => { reflection.type => value })
             else
               klass = next_reflection.klass
               value = ([klass] + klass.descendants).map(&:name)
-              scope = scope.where(table.name => { reflection.type => value })
             end
+            scope = scope.where(table.name => { reflection.type => value })
             # END PATCH
           end
 
