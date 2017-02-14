@@ -128,6 +128,8 @@ if ActiveRecord::VERSION::STRING =~ /^5\.0/
 
       class Preloader
         class Association
+          private
+
           def build_scope
             scope = klass.unscoped
 
@@ -236,6 +238,7 @@ if ActiveRecord::VERSION::STRING =~ /^5\.0/
           binds
         end
 
+        private
 
         def next_chain_scope(scope, table, reflection, association_klass, foreign_table, next_reflection)
           join_keys = reflection.join_keys(association_klass)
@@ -262,7 +265,6 @@ if ActiveRecord::VERSION::STRING =~ /^5\.0/
 
           scope = scope.joins(join(foreign_table, constraint))
         end
-
 
         def last_chain_scope(scope, table, reflection, owner, association_klass)
           join_keys = reflection.join_keys(association_klass)
@@ -324,6 +326,8 @@ if ActiveRecord::VERSION::STRING =~ /^5\.0/
       end
 
       class HasManyThroughAssociation
+        private
+
         def build_through_record(record)
           @through_records[record.object_id] ||= begin
             ensure_mutable
